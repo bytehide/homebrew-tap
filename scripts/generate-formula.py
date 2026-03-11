@@ -7,7 +7,6 @@ Usage:
 Outputs the complete Formula/shield-ios.rb to stdout.
 """
 
-import hashlib
 import json
 import sys
 import urllib.request
@@ -49,7 +48,10 @@ def get_dependencies(pypi_data):
         if "extra ==" in req:
             continue
         # Parse package name (before any version specifier)
-        name = req.split(";")[0].split("<")[0].split(">")[0].split("=")[0].split("!")[0].split("~")[0].strip()
+        parts = req.split(";")[0]
+        for sep in "<>=!~":
+            parts = parts.split(sep)[0]
+        name = parts.strip()
         name_normalized = name.lower().replace("_", "-")
         if name_normalized not in SKIP_DEPS:
             deps.append(name_normalized)
@@ -123,16 +125,16 @@ def generate_formula(version):
   end
 '''
 
-    formula += '''
-  def install
-    virtualenv_install_with_resources
-  end
-
-  test do
-    assert_match "shield-ios", shell_output("#{{bin}}/shield-ios --help")
-  end
-end
-'''
+    test_line = '    assert_match "shield-ios", shell_output("#{bin}/shield-ios --help")'
+    formula += "\n"
+    formula += "  def install\n"
+    formula += "    virtualenv_install_with_resources\n"
+    formula += "  end\n"
+    formula += "\n"
+    formula += "  test do\n"
+    formula += test_line + "\n"
+    formula += "  end\n"
+    formula += "end\n"
 
     return formula
 
