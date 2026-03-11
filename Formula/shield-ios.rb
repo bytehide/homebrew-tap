@@ -49,7 +49,7 @@ class ShieldIos < Formula
   end
 
   test do
-    assert_match "shield-ios", shell_output("#{{bin}}/shield-ios --help")
+    assert_match "shield-ios", shell_output("#{bin}/shield-ios --help")
   end
 end
 
