@@ -63,9 +63,8 @@ class ShieldIos < Formula
 
   def install
     virtualenv_create(libexec, "python3.12")
-    pip = libexec/"bin/pip"
+    python = libexec/"bin/python"
 
-    # Install wheels directly (bypass Homebrew's --no-binary flag)
     wheel_dir = buildpath/"wheels"
     wheel_dir.mkpath
 
@@ -77,7 +76,7 @@ class ShieldIos < Formula
     main_name = File.basename(URI.parse(stable.url).path)
     cp cached_download, wheel_dir/main_name
 
-    system pip, "install", "--no-deps", "--ignore-installed", *Dir[wheel_dir/"*.whl"]
+    system python, "-m", "pip", "install", "--no-deps", "--ignore-installed", *Dir[wheel_dir/"*.whl"]
     bin.install_symlink Dir[libexec/"bin/shield-ios"]
   end
 
