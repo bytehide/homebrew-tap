@@ -14,6 +14,8 @@ def generate_formula(version):
     test_line = '    assert_match "shield-ios", shell_output("#{bin}/shield-ios --help")'
 
     formula = f'''class ShieldIos < Formula
+  include Language::Python::Virtualenv
+
   desc "iOS application protection: obfuscation, encryption, and runtime security"
   homepage "https://www.bytehide.com"
   url "https://pypi.org/simple/bytehide-shield-ios/"
