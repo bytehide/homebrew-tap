@@ -1,3 +1,5 @@
+require "uri"
+
 class ShieldIos < Formula
   include Language::Python::Virtualenv
 
@@ -60,7 +62,23 @@ class ShieldIos < Formula
   end
 
   def install
-    virtualenv_install_with_resources
+    virtualenv_create(libexec, "python3.12")
+    pip = libexec/"bin/pip"
+
+    # Install wheels directly (bypass Homebrew's --no-binary flag)
+    wheel_dir = buildpath/"wheels"
+    wheel_dir.mkpath
+
+    resources.each do |r|
+      whl_name = File.basename(URI.parse(r.url).path)
+      cp r.cached_download, wheel_dir/whl_name
+    end
+
+    main_name = File.basename(URI.parse(stable.url).path)
+    cp cached_download, wheel_dir/main_name
+
+    system pip, "install", "--no-deps", "--ignore-installed", *Dir[wheel_dir/"*.whl"]
+    bin.install_symlink Dir[libexec/"bin/shield-ios"]
   end
 
   test do

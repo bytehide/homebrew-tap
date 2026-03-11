@@ -107,6 +107,8 @@ def generate_formula(version):
     test_line = '    assert_match "shield-ios", shell_output("#{bin}/shield-ios --help")'
 
     lines = []
+    lines.append('require "uri"')
+    lines.append("")
     lines.append("class ShieldIos < Formula")
     lines.append("  include Language::Python::Virtualenv")
     lines.append("")
@@ -127,7 +129,22 @@ def generate_formula(version):
 
     lines.append("")
     lines.append("  def install")
-    lines.append("    virtualenv_install_with_resources")
+    lines.append('    virtualenv_create(libexec, "python3.12")')
+    lines.append('    pip = libexec/"bin/pip"')
+    lines.append("")
+    lines.append('    wheel_dir = buildpath/"wheels"')
+    lines.append("    wheel_dir.mkpath")
+    lines.append("")
+    lines.append("    resources.each do |r|")
+    lines.append("      whl_name = File.basename(URI.parse(r.url).path)")
+    lines.append("      cp r.cached_download, wheel_dir/whl_name")
+    lines.append("    end")
+    lines.append("")
+    lines.append("    main_name = File.basename(URI.parse(stable.url).path)")
+    lines.append("    cp cached_download, wheel_dir/main_name")
+    lines.append("")
+    lines.append('    system pip, "install", "--no-deps", "--ignore-installed", *Dir[wheel_dir/"*.whl"]')
+    lines.append('    bin.install_symlink Dir[libexec/"bin/shield-ios"]')
     lines.append("  end")
     lines.append("")
     lines.append("  test do")
