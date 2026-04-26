@@ -5,20 +5,20 @@ class ShieldIos < Formula
 
   desc "iOS application protection: obfuscation, encryption, and runtime security"
   homepage "https://www.bytehide.com"
-  url "https://files.pythonhosted.org/packages/eb/1e/e0c17f84eaede0f5bdff454db32d5f8e2b53b2f1680c551d09a925a81cc7/bytehide_shield_ios-1.0.7-cp312-cp312-macosx_11_0_universal2.whl"
-  sha256 "623c07948940bd1bb8f8947068d513155d740685f30ca2bcef4a065798f70673"
+  url "https://files.pythonhosted.org/packages/27/f1/90f8dfdaebb05b46b60b9ec96358449b10544f5fd5ef5f3db2a366c874df/bytehide_shield_ios-1.0.8-cp312-cp312-macosx_11_0_universal2.whl"
+  sha256 "08a9613b22fa22ee64f1182486837a17f702690e6d034660472b40e83636eb34"
   license :cannot_represent
 
   depends_on "python@3.12"
 
   resource "lief" do
-    url "https://files.pythonhosted.org/packages/86/19/d4777f22af38391ae149cb32444fe0cc5b6b6bdd42a1168fea487834b200/lief-0.17.5-cp312-cp312-macosx_11_0_arm64.whl"
-    sha256 "386651db9a6697da3f856a1fce6234adad4bae28aba54449ca9998af63f9c635"
+    url "https://files.pythonhosted.org/packages/1f/29/e7a0dabcb853867da70fda2b397012dd3d9ef4994ab7e8bd21f248bea64b/lief-0.17.6-cp312-cp312-macosx_11_0_arm64.whl"
+    sha256 "c5a19642e42578fe0b701bd86b10dd7e86d69c35c67d25ac1433f72410a7c2bb"
   end
 
   resource "click" do
-    url "https://files.pythonhosted.org/packages/98/78/01c019cdb5d6498122777c1a43056ebb3ebfeef2076d9d026bfe15583b2b/click-8.3.1-py3-none-any.whl"
-    sha256 "981153a64e25f12d547d3426c367a4857371575ee7ad18df2a6183ab0545b2a6"
+    url "https://files.pythonhosted.org/packages/ae/44/c1221527f6a71a01ec6fbad7fa78f1d50dfa02217385cf0fa3eec7087d59/click-8.3.3-py3-none-any.whl"
+    sha256 "a2bf429bb3033c89fa4936ffb35d5cb471e3719e1f3c8a7c3fff0b8314305613"
   end
 
   resource "pyyaml" do
@@ -37,8 +37,8 @@ class ShieldIos < Formula
   end
 
   resource "requests" do
-    url "https://files.pythonhosted.org/packages/1e/db/4254e3eabe8020b458f1a747140d32277ec7a271daf1d235b70dc0b4e6e3/requests-2.32.5-py3-none-any.whl"
-    sha256 "2462f94637a34fd532264295e186976db0f5d453d1cdd31473c85a6a161affb6"
+    url "https://files.pythonhosted.org/packages/d7/8e/7540e8a2036f79a125c1d2ebadf69ed7901608859186c856fa0388ef4197/requests-2.33.1-py3-none-any.whl"
+    sha256 "4e6d1ef462f3626a1f0a0a9c42dd93c63bad33f9f1c1937509b8c5c8718ab56a"
   end
 
   resource "urllib3" do
@@ -47,18 +47,18 @@ class ShieldIos < Formula
   end
 
   resource "charset-normalizer" do
-    url "https://files.pythonhosted.org/packages/9c/b6/9ee9c1a608916ca5feae81a344dffbaa53b26b90be58cc2159e3332d44ec/charset_normalizer-3.4.5-cp312-cp312-macosx_10_13_universal2.whl"
-    sha256 "ed97c282ee4f994ef814042423a529df9497e3c666dca19be1d4cd1129dc7ade"
+    url "https://files.pythonhosted.org/packages/db/8f/61959034484a4a7c527811f4721e75d02d653a35afb0b6054474d8185d4c/charset_normalizer-3.4.7-py3-none-any.whl"
+    sha256 "3dce51d0f5e7951f8bb4900c257dad282f49190fdbebecd4ba99bcc41fef404d"
   end
 
   resource "idna" do
-    url "https://files.pythonhosted.org/packages/0e/61/66938bbb5fc52dbdf84594873d5b51fb1f7c7794e9c0f5bd885f30bc507b/idna-3.11-py3-none-any.whl"
-    sha256 "771a87f49d9defaf64091e6e6fe9c18d4833f140bd19464795bc32d966ca37ea"
+    url "https://files.pythonhosted.org/packages/5d/13/ad7d7ca3808a898b4612b6fe93cde56b53f3034dcde235acb1f0e1df24c6/idna-3.13-py3-none-any.whl"
+    sha256 "892ea0cde124a99ce773decba204c5552b69c3c67ffd5f232eb7696135bc8bb3"
   end
 
   resource "certifi" do
-    url "https://files.pythonhosted.org/packages/9a/3c/c17fb3ca2d9c3acff52e30b309f538586f9f5b9c9cf454f3845fc9af4881/certifi-2026.2.25-py3-none-any.whl"
-    sha256 "027692e4402ad994f1c42e52a4997a9763c646b73e4096e4d5d6db8af1d6f0fa"
+    url "https://files.pythonhosted.org/packages/22/30/7cd8fdcdfbc5b869528b079bfb76dcdf6056b1a2097a662e5e8c04f42965/certifi-2026.4.22-py3-none-any.whl"
+    sha256 "3cb2210c8f88ba2318d29b0388d1023c8492ff72ecdde4ebdaddbb13a31b1c4a"
   end
 
   def install
@@ -84,3 +84,4 @@ class ShieldIos < Formula
     assert_match "shield-ios", shell_output("#{bin}/shield-ios --help")
   end
 end
+
