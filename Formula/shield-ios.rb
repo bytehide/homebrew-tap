@@ -5,8 +5,8 @@ class ShieldIos < Formula
 
   desc "iOS application protection: obfuscation, encryption, and runtime security"
   homepage "https://www.bytehide.com"
-  url "https://files.pythonhosted.org/packages/91/19/5a593cf6955938bcf889a74ceb592fd22236d247aefa39b6421d52da5cab/bytehide_shield_ios-1.0.9-cp312-cp312-macosx_11_0_universal2.whl"
-  sha256 "fd23305237f77ee71a42df082133153c49afe91d120331595fed79557128b202"
+  url "https://files.pythonhosted.org/packages/46/25/e36b66ee0bac9fd69461c5db64505eb405f24ec55a6aad151f181c33257e/bytehide_shield_ios-1.0.10-cp312-cp312-macosx_11_0_universal2.whl"
+  sha256 "fc50917ad3d72cb21cfd51ce2975ad03c27a6010172479becfb2890a02b7a46c"
   license :cannot_represent
 
   depends_on "python@3.12"
